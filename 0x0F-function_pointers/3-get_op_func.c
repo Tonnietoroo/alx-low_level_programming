@@ -30,4 +30,8 @@ int (*get_op_func(char *s))(int, int)
 		i++;
 
 	return (ops[i].f);
+<<<<<<< HEAD
 
+=======
+}
+>>>>>>> 94329821c27da00ca3291d7d8dcc1ec6efebbafd

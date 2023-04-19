@@ -9,9 +9,16 @@
  */
 
 /**
+<<<<<<< HEAD
  * struct op - A struct op.
  * @op: The operator.
  * @f: The associated function.
+=======
+ * struct op - Struct op
+ *
+ * @op: The operator
+ * @f: The function associated
+>>>>>>> 94329821c27da00ca3291d7d8dcc1ec6efebbafd
  */
 typedef struct op
 {

@@ -32,12 +32,21 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(2);
 	}
+<<<<<<< HEAD
 
 	for (index = 0; index < bytes; index++)
 	{
 		opcode = *(unsigned char *)address;
 		printf("%.2x", opcode);
 
+=======
+
+	for (index = 0; index < bytes; index++)
+	{
+		opcode = *(unsigned char *)address;
+		printf("%.2x", opcode);
+
+>>>>>>> 94329821c27da00ca3291d7d8dcc1ec6efebbafd
 		if (index == bytes - 1)
 			continue;
 		printf(" ");
