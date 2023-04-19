@@ -1,40 +1,51 @@
+/*
+ * File: 100-main_opcodes.c
+ * Auth: Brennan D Baraban
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 /**
- * main - check the code for Holberton School students.
- *
- * @argc: argument's number
- * @argv: argument's array
+ * main - Prints the opcodes of itself.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
  *
  * Return: Always 0.
  */
-
 int main(int argc, char *argv[])
 {
-int cLoop, byteNumber;
-char *ptrMain = (char *)main;
-if (argc != 2)
-{
-puts("Error");
-exit(1);
-}
-byteNumber = atoi(argv[1]);
-if (byteNumber < 0)
-{
-puts("Error");
-exit(2);
-}
-for (cLoop = 0; cLoop < byteNumber; cLoop++)
-{
-printf("%02hhx", *ptrMain);
-if (cLoop < byteNumber - 1)
-{
-printf(" ");
-}
-ptrMain++;
-}
-printf("\n");
-return (0);
+	int bytes, index;
+	int (*address)(int, char **) = main;
+	unsigned char opcode;
 
+	if (argc != 2)
+	{
+		printf("Error\n");
+		exit(1);
+	}
+
+	bytes = atoi(argv[1]);
+
+	if (bytes < 0)
+	{
+		printf("Error\n");
+		exit(2);
+	}
+
+	for (index = 0; index < bytes; index++)
+	{
+		opcode = *(unsigned char *)address;
+		printf("%.2x", opcode);
+
+		if (index == bytes - 1)
+			continue;
+		printf(" ");
+
+		address++;
+	}
+
+	printf("\n");
+
+	return (0);
+}
