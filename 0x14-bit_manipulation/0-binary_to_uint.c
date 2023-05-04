@@ -1,32 +1,67 @@
 #include "main.h"
-#include <string.h>
-#include <ctype.h>
 
 /**
- * binary_to_uint - convert a binary number to unsigned int
- * @c: pointer to binary number
+ * _strlen - returns length of string (modified)
+ * @s: string to be determined
  *
- * Return: the converted number or NULL if function fails
+ * Return: length of string
  */
-unsigned int binary_to_uint(const char *c)
-{
-	unsigned int decimal = 0, base = 1;
-	int a;
 
-	if (c == NULL)
+int _strlen(const char *s)
+{
+	int len = 0;
+
+	while (s[len] != '\0')
+	{
+		len++;
+	}
+
+	return (len);
+}
+
+/**
+ * power - calculates the exponents
+ * @base: base
+ * @exp: exponent
+ *
+ * Return: result (int)
+ */
+
+int power(int base, int exp)
+{
+	int i, num;
+
+	num = 1;
+	for (i = 0; i < exp; ++i)
+		num *= base;
+
+	return (num);
+}
+
+/**
+ * binary_to_uint - converts a binary number to an unsigned int
+ * @b: pointer to the string representation of the binary number
+ *
+ * Return: the converted number, or 0 if there is one or more
+ *         chars in the string b that is not 0 or 1, or if b is NULL
+ */
+unsigned int binary_to_uint(const char *b)
+{
+	unsigned int num = 0;
+	int i, len;
+
+	if (b == NULL)
 		return (0);
 
-	for (a = 0; c[a];)
-		a++;
+	len = _strlen(b);
 
-	for (a -= a; a >= 0; a--) /* search for null 0 or 1 characters*/
+	for (i = len - 1; i >= 0; i--)
 	{
-		if (isdigit(c[a]) == 0)
-		{
+		if (b[i] != '0' && b[i] != '1')
 			return (0);
-		}
-		decimal += (c[a] - '0') * base;
-		base *= 2;
+
+		num += (b[i] - '0') * power(2, len - i - 1);
 	}
-	return (decimal);
+
+	return (num);
 }
